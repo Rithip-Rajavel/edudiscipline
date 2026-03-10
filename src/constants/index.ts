@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'http://localhost:5022';
+export const API_BASE_URL = 'https://app.undefineddevelopers.online/edudiscipline';
 
 export const SCREEN_NAMES = {
   LOGIN: 'Login',

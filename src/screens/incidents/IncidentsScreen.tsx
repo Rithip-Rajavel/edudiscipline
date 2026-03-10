@@ -133,7 +133,7 @@ const IncidentsScreen = ({ navigation }: any) => {
                 color={THEME.colors.disabled} 
               />
               <Text style={styles.incidentType}>
-                {item.incidentType.replace('_', ' ')}
+                {item.incidentType ? item.incidentType.replace('_', ' ') : 'Unknown'}
               </Text>
             </View>
             

@@ -14,6 +14,7 @@ import ProfileScreen from '../screens/profile/ProfileScreen';
 import IncidentDetailsScreen from '../screens/incidents/IncidentDetailsScreen';
 import CreateIncidentScreen from '../screens/incidents/CreateIncidentScreen';
 import QuickIncidentScreen from '../screens/incidents/QuickIncidentScreen';
+import ScannerScreen from '../screens/incidents/ScannerScreen';
 import StudentDetailsScreen from '../screens/students/StudentDetailsScreen';
 import AchievementDetailsScreen from '../screens/achievements/AchievementDetailsScreen';
 import CreateAchievementScreen from '../screens/achievements/CreateAchievementScreen';
@@ -111,6 +112,11 @@ const AdminStack = () => {
         name="QuickIncident" 
         component={QuickIncidentScreen}
         options={{ headerShown: true, title: 'Quick Incident' }}
+      />
+      <Stack.Screen 
+        name="Scanner" 
+        component={ScannerScreen}
+        options={{ headerShown: true, title: 'Scan ID' }}
       />
       <Stack.Screen 
         name="StudentDetails" 

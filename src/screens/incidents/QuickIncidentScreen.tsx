@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -19,7 +19,7 @@ import { incidentsApi } from '../../api/incidents';
 import { INCIDENT_TYPES, SEVERITY_LEVELS, THEME } from '../../constants';
 import { QuickIncidentRequest } from '../../types';
 
-const QuickIncidentScreen = ({ navigation }: any) => {
+const QuickIncidentScreen = ({ route, navigation }: any) => {
   const [isLoading, setIsLoading] = useState(false);
   
   const [incidentData, setIncidentData] = useState<QuickIncidentRequest>({
@@ -35,6 +35,13 @@ const QuickIncidentScreen = ({ navigation }: any) => {
     incidentType: '',
     severity: '',
   });
+
+  useEffect(() => {
+    if (route.params?.scannedId) {
+      setIncidentData(prev => ({ ...prev, studentIdentifier: route.params.scannedId }));
+      setErrors(prev => ({ ...prev, studentIdentifier: '' }));
+    }
+  }, [route.params?.scannedId]);
 
   const validateForm = () => {
     const newErrors = {
@@ -88,6 +95,7 @@ const QuickIncidentScreen = ({ navigation }: any) => {
               style={styles.input}
               error={!!errors.studentIdentifier}
               placeholder="Enter roll number, ID card number, or mobile"
+              right={<TextInput.Icon icon="qrcode-scan" onPress={() => navigation.navigate('Scanner')} />}
             />
             <HelperText type="error" visible={!!errors.studentIdentifier}>
               {errors.studentIdentifier}
